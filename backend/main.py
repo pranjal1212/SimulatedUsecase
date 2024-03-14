@@ -9,8 +9,7 @@ CORS(app)
 
 def connection():
    # Connect to DynamoDB
-   # aws_secret_access_key='MI12Xr8F2+/r7WsbqWD8YmaGtQ90xJlEPet/pekL'
-   dynamodb = boto3.resource('dynamodb', region_name='ap-south-1', aws_access_key_id='AKIAXYKJVS2ZY5TFNOQZ', aws_secret_access_key='',endpoint_url='https://dynamodb.ap-south-1.amazonaws.com')
+   dynamodb = boto3.resource('dynamodb', region_name='ap-south-1', aws_access_key_id='', aws_secret_access_key='',endpoint_url='https://dynamodb.ap-south-1.amazonaws.com')
    table_name = 'master_gym'
    table = dynamodb.Table(table_name)
    return table
