@@ -44,6 +44,23 @@ select{
   height: auto;
 }
 
+.btn-css{
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 10px;
+
+}
+
+#nextPage{
+  margin-left: 150px;
+}
+
+.log{
+  font-size: 14px;
+  color: red;
+  font-weight: 600;
+}
+
 /*form-second page*/
 .second {
   margin-bottom: 30px;
