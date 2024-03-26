@@ -32,16 +32,16 @@ const Login = ({handleRegister}) => {
             <h2>Login</h2>
             <form onSubmit={handleSubmit} className="login-form">
                 <label>First Name:</label>
-                <input type="text" value={firstName} onChange={(e) => setFirstName(e.target.value)} required />
+                <input placeholder='Enter first name' type="text" value={firstName} onChange={(e) => setFirstName(e.target.value)} required />
                 <label>Last Name:</label>
-                <input type="text" value={lastName} onChange={(e) => setLastName(e.target.value)} required />
+                <input placeholder='Enter last name' type="text" value={lastName} onChange={(e) => setLastName(e.target.value)} required />
                 <label>Date of Birth:</label>
-                <input type="text" value={dob} onChange={(e) => setDob(e.target.value)} required />
+                <input placeholder='mm/dd/yyyy' type="text" value={dob} onChange={(e) => setDob(e.target.value)} required />
                 <label>Pincode:</label>
-                <input type="text" value={pincode} onChange={(e) => setPincode(e.target.value)} required />
+                <input placeholder='Enter pincode' type="text" value={pincode} onChange={(e) => setPincode(e.target.value)} required />
                 <button type="submit">Login</button>
             </form>
-            <p>Don't have an account?  <a href='#' onClick={() => handleRegister()}>Register</a></p>
+            <p className='log'>New account?  <a href='#' onClick={() => handleRegister()}>Register</a></p>
             {message && <p>{message}</p>}
         </div>
     );
