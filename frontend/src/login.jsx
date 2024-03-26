@@ -41,7 +41,7 @@ const Login = ({handleRegister}) => {
                 <input type="text" value={pincode} onChange={(e) => setPincode(e.target.value)} required />
                 <button type="submit">Login</button>
             </form>
-            <p>Don't have an account?  <a href='#' onClick={() => handleRegister()}>Register</a></p>
+            <p className='log'>New account?  <a href='#' onClick={() => handleRegister()}>Register</a></p>
             {message && <p>{message}</p>}
         </div>
     );
