@@ -1,4 +1,4 @@
-from flask import Flask, request
+from flask import Flask, request, jsonify
 import boto3
 import random
 from flask_cors import CORS
@@ -172,17 +172,16 @@ def login():
            ':dob': birth_dt,
            ':pincode': pincode
        }
-   )
-
+   )  
    count = response['Count']
-   if 'Items in response' and count > 0:
-       
-       #user_data = response['Items'][0]  # Assuming only one user is found
-       return jsonify({'success': True, 'message': 'Login successfull'})
+   if 'Items in response' and count == 1:
+      return jsonify({'success': True, 'message': 'Login successfull'})
+   
+   elif count>1:
+      return jsonify({'success':False, 'message':'Duplicate data found'})
 
    else:
        return jsonify({'success': False, 'message': 'User not found or incorrect details'})
  
-                  
 if __name__ == '__main__':
    app.run(debug=True)
