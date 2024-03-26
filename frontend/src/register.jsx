@@ -76,13 +76,13 @@ const Register = ({handleLogIn}) => {
 
                         <div className='Field'>
                             <label>First Name : </label>
-                            <input value={first_name}
+                            <input placeholder='Ex. John' value={first_name}
                                 onChange={e => setFirstName(e.target.value)} required/>
                         </div>
 
                         <div className='Field'>
                             <label>Last Name : </label>
-                            <input value={last_name}
+                            <input placeholder='Ex. Wick' value={last_name}
                                 onChange={e => {
                                     setLastName(e.target.value);
                                     console.log(e.target.value)
@@ -144,35 +144,35 @@ const Register = ({handleLogIn}) => {
 
                         <div className='Field'>
                             <label>City : </label>
-                            <input value={city}
+                            <input placeholder='Ex. Nagpur' value={city}
                                 onChange={e => setCity(e.target.value)}
                             />
                         </div>
 
                         <div className='Field'>
                             <label>State : </label>
-                            <input value={state}
+                            <input placeholder='Ex. Maharashtra' value={state}
                                 onChange={e => setState(e.target.value)} required
                             />
                         </div>
 
                         <div className='Field'>
                             <label>Country : </label>
-                            <input value={country}
+                            <input placeholder='Ex. India' value={country}
                                 onChange={e => setCountry(e.target.value)}
                             />
                         </div>
 
                         <div className='Field'>
                             <label>Pincode : </label>
-                            <input value={pincode}
+                            <input placeholder='Ex. 440022' value={pincode}
                                 onChange={e => setPincode(e.target.value)}
                             />
                         </div>
 
 
 
-                        <button type='button' onClick={handleRegistration} >Register</button>
+                        <button id='register' type='button' onClick={handleRegistration} >Register</button>
 
                     </div>
                 )}

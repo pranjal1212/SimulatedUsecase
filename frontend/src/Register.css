@@ -55,6 +55,10 @@ select{
   margin-left: 150px;
 }
 
+#register{
+  margin-left: 200px;
+}
+
 .log{
   font-size: 14px;
   color: red;
