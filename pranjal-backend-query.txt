@@ -1,4 +1,26 @@
-1) Find out the number of duplicate datas in master table and pranjal table in athena using below query:
+1) Create new table for testing in aws athena
+CREATE EXTERNAL TABLE `pranjal`(
+  `customer_id` bigint, 
+  `first_name` string, 
+  `last_name` string, 
+  `date_of_birth` string, 
+  `gym_id` string, 
+  `category_type` string, 
+  `city` string, 
+  `state` string, 
+  `country` string, 
+  `pincode` bigint)
+ROW FORMAT DELIMITED 
+  FIELDS TERMINATED BY ',' 
+STORED AS INPUTFORMAT 
+  'org.apache.hadoop.mapred.TextInputFormat' 
+OUTPUTFORMAT 
+  'org.apache.hadoop.hive.ql.io.HiveIgnoreKeyTextOutputFormat'
+LOCATION
+  's3://aws-glue-bucket11/data-store/gym/single_pass_files/Pranjal';
+select * from pranjal;
+
+2) Find out the number of duplicate datas in master table and pranjal table in athena using below query:
 SELECT first_name, 
 last_name, 
 date_of_birth, 
@@ -51,7 +73,7 @@ AND m.country = p.country
 AND CAST(m.pincode as varchar) = p.pincode
 ) AS combined_duplicates;
 
-2) Solved the issue for existing data using below query in Athena aws 
+3) Solved the issue for existing data using below query in Athena aws 
 Created a new table by providing same customer id to the duplicate data with different gym id.
 
 CREATE TABLE updated_master_table AS
