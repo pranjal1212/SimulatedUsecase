@@ -1,0 +1,76 @@
+1. Created single pass file for testing -----------------------
+
+CREATE EXTERNAL TABLE `rohit_onepass`(
+  `customer_id` bigint, 
+  `first_name` string, 
+  `last_name` string, 
+  `date_of_birth` string, 
+  `gym_id` string, 
+  `category_type` string, 
+  `city` string, 
+  `state` string, 
+  `country` string, 
+  `pincode` bigint)
+ROW FORMAT DELIMITED 
+  FIELDS TERMINATED BY ',' 
+STORED AS INPUTFORMAT 
+  'org.apache.hadoop.mapred.TextInputFormat' 
+OUTPUTFORMAT 
+  'org.apache.hadoop.hive.ql.io.HiveIgnoreKeyTextOutputFormat'
+LOCATION
+  's3://aws-glue-bucket11/data-store/gym/single_pass_files/Rohit';
+  
+select * from rohit_onepass;
+
+-------------------------------
+
+2. checking duplicates from individual onepass file ----------
+
+SELECT first_name, 
+    last_name, 
+    date_of_birth, 
+    category_type, 
+    city, 
+    state, 
+    country, 
+    pincode, 
+    COUNT(*) AS duplicate_count
+FROM rohit_onepass
+GROUP BY 
+    first_name, 
+    last_name, 
+    date_of_birth, 
+    category_type, 
+    city, 
+    state, 
+    country, 
+    pincode
+HAVING 
+COUNT(*) > 1;
+
+-------------------------------------------
+
+3. Solved the issue for existing data using below query in Athena aws 
+   Created a new table by providing same customer id to the duplicate data with different gym id.
+
+CREATE TABLE updated_master_table AS
+SELECT
+   CASE
+       WHEN COUNT(*) OVER(PARTITION BY first_name, last_name, birth_dt, category_type, city, state, country, pincode) > 1
+       THEN CONCAT('', MIN(customer_id) OVER(PARTITION BY first_name, last_name, birth_dt, category_type, city, state, country, pincode))
+       ELSE customer_id
+   END AS customer_id,
+   first_name,
+   last_name,
+   birth_dt,
+   gym_id,
+   category_type,
+   city,
+   state,
+   country,
+   pincode
+FROM
+   rohit_onepass;
+
+---------------------------------------------
+
