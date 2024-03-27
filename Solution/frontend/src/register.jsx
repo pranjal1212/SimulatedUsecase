@@ -44,7 +44,7 @@ const Register = ({handleLogIn}) => {
         console.log(response);
 
         if (response.data.response == "Duplicate") {
-            alert("Duplicate");
+            alert("Already Registered");
         }
         else if (response.status === 200) {
             alert("Registration Successful");
