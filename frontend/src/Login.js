@@ -1,4 +1,4 @@
-import React, {useState } from 'react';
+import React, {useState} from 'react';
 import axios from 'axios';
 import './App.css';
 
@@ -8,15 +8,19 @@ const Login = () => {
     const [dob, setDob] = useState('');
     const [pincode, setPincode] = useState('');
     const [message, setMessage] = useState('');
+    const[gymid,setGymId] = useState([]);
+    const[selectedGym,setSelectedGym]=useState('');
+
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
             const response = await axios.post('http://localhost:5000/login', { firstName, lastName, dob, pincode });
-            console.log(response)
-            const { success, message} = response.data;
+            const { success, message,gym_id} = response.data;
             if (success) {
                 // Login successful
                 setMessage(message);
+                setGymId(gym_id);
+
             } else {
                 setMessage(message);
             }
@@ -41,6 +45,17 @@ const Login = () => {
                 <button type="submit">Submit</button>
             </form>
             {message && <p>{message}</p>}
+            {gymid.length>0 && (
+                <div className='select-gym'>
+                    <label>Select Gym:</label>
+                    <select value={selectedGym} onChange={(e) => setSelectedGym(e.target.value)}required>
+                        <option value="">Select Gym</option>
+                        {gymid.map(gymId=> (
+                            <option key={gymId} value={gymId}>{gymId}</option>
+                        ))}
+                    </select>
+                    </div>
+            )}
         </div>
     );
 };
