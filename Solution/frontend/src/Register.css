@@ -1,0 +1,119 @@
+.App {
+  display: flex;
+  flex: 1;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  background-color: #E5E5E5;
+  overflow-y: scroll;
+}
+ 
+label {
+  margin-bottom: 8px;
+  font-size: 14px;
+}
+ 
+input, select {
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  height: 32px;
+  padding: 0 8px;
+}
+ 
+select{
+  height: 35px;
+}
+ 
+ 
+.Field {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  padding-bottom: 24px;
+ 
+ 
+}
+/*form-first page*/
+.first {
+  margin-bottom: 30px;
+  margin-top: 0px;
+  background-color: white;
+  width: 500px;
+  padding: 10px 40px 20px 40px;
+  border: 1px solid black;
+  height: auto;
+}
+
+.btn-css{
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 10px;
+
+}
+
+#nextPage{
+  margin-left: 150px;
+}
+
+#register{
+  margin-left: 200px;
+}
+
+.log{
+  font-size: 14px;
+  color: red;
+  font-weight: 600;
+}
+
+/*form-second page*/
+.second {
+  margin-bottom: 30px;
+  margin-top: 160px;
+  background-color: white;
+  width: 500px;
+  padding: 10px 40px 20px 40px;
+  border: 1px solid black;
+  height: auto;
+}
+ 
+button {
+  padding: 12px;
+  width: 100px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  background-color: darkblue;
+  color: white;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+  /* margin-left: 42%; */
+}
+ 
+.arrow {
+  border: solid black;
+  border-width: 0 3px 3px 0;
+  display: inline-block;
+  padding: 3px;
+}
+ 
+.left {
+  transform: rotate(135deg);
+  -webkit-transform: rotate(135deg);
+}
+ 
+#backButton{
+  background-color: white;
+  padding: 12px;
+  padding-left: 0px;
+  width: auto;
+  color: black;
+  border: 0px solid white;
+  margin-left: 0px;
+  margin-right: 20px;
+  display: flex;
+}
+
+#backButton h4{
+  margin-top: 5px;
+  margin-left: 10px;
+}
