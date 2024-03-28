@@ -30,14 +30,14 @@ const Register = ({handleLogIn}) => {
 
         const requestBody = {
             "category_type": categoryType,
-            "city": city,
-            "country": country,
-            "birth_dt": dob,
-            "first_name": first_name,
+            "city": city.trim(),
+            "country": country.trim(),
+            "birth_dt": dob.trim(),
+            "first_name": first_name.trim(),
             "gym_id": gymID,
-            "last_name": last_name,
-            "pincode": pincode,
-            "state": state
+            "last_name": last_name.trim(),
+            "pincode": pincode.trim(),
+            "state": state.trim()
         }
 
         const response = await axios.post("http://localhost:5000/register", requestBody);
