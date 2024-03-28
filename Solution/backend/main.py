@@ -137,7 +137,7 @@ def checkDuplicate(table, firstName, lastName, birthDate, categoryType, gymId, c
          ":pincode_val": pincode
       }
    )
-   # print(response)
+   print(response)
    if response["Count"] > 0:
       return True
    else:
