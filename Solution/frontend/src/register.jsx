@@ -1,6 +1,6 @@
 import './Register.css';
 import axios from 'axios'
-import React, { useEffect, useState } from 'react';
+import React, {useState } from 'react';
 
 const Register = ({handleLogIn}) => {
     const [showFirstFields, setshowFirstFields] = useState(true)
@@ -43,7 +43,7 @@ const Register = ({handleLogIn}) => {
         const response = await axios.post("http://localhost:5000/register", requestBody);
         console.log(response);
 
-        if (response.data.response == "Duplicate") {
+        if (response.data.response === "Duplicate") {
             alert("Already Registered");
         }
         else if (response.status === 200) {

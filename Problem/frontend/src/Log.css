@@ -6,12 +6,10 @@
   border-radius: 5px;
   background-color: #f9f9f9;
 }
-
 .login-form label {
   display: block;
   margin-bottom: 10px;
 }
-
 .login-form input[type="text"],
 .login-form input[type="date"] {
   width: 96%;
@@ -20,11 +18,10 @@
   border: 1px solid #ccc;
   border-radius: 5px;
 }
-
-.button {
+.login-form button {
   width: 100%;
   padding: 10px;
-  background-color: #007bff;
+  background-color: #0b78ec;
   color: #fff;
   border: none;
   border-radius: 5px;
@@ -36,23 +33,74 @@
   background-color: #0056b3;
 }
 
-.message {
-  margin-top: 15px;
-  padding: 10px;
-  background-color: #ffc107;
-  border-radius: 5px;
+.welcome-container {
+
+  display: flex;
+
+  flex-direction: column;
+
+  justify-content: center;
+
+  align-items: center;
+
+  height: 100vh;
+
 }
 
-.user-data {
-  margin-top: 20px;
-  padding: 15px;
-  border: 1px solid #007bff;
-  border-radius: 5px;
-  background-color: #f0f8ff;
+.header {
+
+  text-align: center;
+
+  margin-bottom: 20px;
+
 }
 
-.log {
+.content {
+
+  text-align: center;
+
+}
+
+.get-started-button {
+
+  background-color: #007bff;
+
+  color: #fff;
+
+  border: none;
+
+  padding: 10px 20px;
+
+  font-size: 16px;
+
+  cursor: pointer;
+
+  transition: background-color 0.3s;
+
+}
+
+.get-started-button:hover {
+
+  background-color: #0056b3;
+
+}
+
+.footer {
+
+  position: fixed;
+
+  bottom: 0;
+
+  width: 100%;
+
+  background-color: #f8f9fa;
+
+  padding: 10px 0;
+
+  text-align: center;
+
   font-size: 14px;
-  color: red;
-  font-weight: 600;
+
+  color: #333;
+
 }
