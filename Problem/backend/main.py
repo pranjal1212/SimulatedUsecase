@@ -1,5 +1,6 @@
 from flask import Flask, request, jsonify
 import boto3
+import random
 from flask_cors import CORS
  
 
@@ -21,17 +22,7 @@ def login():
    last_name = data.get('lastName')
    birth_dt = data.get('dob')
    pincode = data.get('pincode')
-   
-   # response = table.scan(
-   #     FilterExpression='first_name = :fName and last_name = :lName and birth_dt = :dob and pincode = :pincode',
-   #     ExpressionAttributeValues={
-   #         ':fName': first_name,
-   #         ':lName': last_name,
-   #         ':dob': birth_dt,
-   #         ':pincode': pincode
-   #     }
-   # )  
-   # Define your filter expression and attribute values
+
    filter_expression = "first_name = :first_name_val AND last_name = :last_name_val AND birth_dt = :birth_val AND pincode = :pincode_val"
    #expression_attribute_names = {'#s': 'state'}
    expression_attribute_values = {
@@ -68,6 +59,5 @@ def login():
 
    else:
        return jsonify({'success': False, 'message': 'User not found or incorrect details'})
- 
 if __name__ == '__main__':
    app.run(debug=True)
