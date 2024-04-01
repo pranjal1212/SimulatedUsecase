@@ -13,7 +13,7 @@ const Login = ({handleRegister}) => {
 
     useEffect(() => {
         if(message) {
-            alert(message)
+            alert(message);
         }
     },[message]);
 
@@ -22,13 +22,11 @@ const Login = ({handleRegister}) => {
         try {
             const response = await axios.post('http://localhost:5000/login', { firstName, lastName, dob,pincode });
             const { success, message} = response.data;
+            setMessage(message);
             if (success) {
                 // Login successful
-                setMessage(message);
-                navigate('/HomePage');
-
-            } else {
-                setMessage(message);
+		  alert('Login successful')
+              navigate('/HomePage');
             }
         } catch (error) {
             console.error('Error:', error);

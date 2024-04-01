@@ -22,16 +22,13 @@ const Login = ({handleRegister}) => {
         try {
             const response = await axios.post('http://localhost:5000/login', { firstName, lastName, dob,pincode });
             const { success, message,gymIds} = response.data;
-            console.log(gymIds)
+            setMessage(message);
             if (success) {
                 // Login successful
-                setMessage(message);
                 // setGymId(gym_id);
-                console.log(gymIds)
+                alert('Login successful')
                 navigate('/SelectGym',{state: {gymIds: gymIds}});
 
-            } else {
-                setMessage(message);
             }
         } catch (error) {
             console.error('Error:', error);
@@ -52,7 +49,7 @@ const Login = ({handleRegister}) => {
                 <input type="text" value={dob} onChange={(e) => setDob(e.target.value)} required />
                 <label>Pincode:</label>
                 <input type="text" value={pincode} onChange={(e) => setPincode(e.target.value)} required />
-                <button type="submit">Submit</button>
+                <button type="submit">Login</button>
             </form>
             <p>Don't have an account?  <a href='#' onClick={() => handleRegister()}>Register</a></p>
         </div>
