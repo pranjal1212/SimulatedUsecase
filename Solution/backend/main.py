@@ -288,15 +288,19 @@ def login():
            ':pincode': pincode
        }
    )  
+
+   gymIds=[]
+   for item in response['Items']:
+      gymIds.append(item['gym_id'])
+
    count = response['Count']
-   if 'Items in response' and count == 1:
-      return jsonify({'success': True, 'message': 'Login successfull'})
    
-   elif count>1:
-      return jsonify({'success':False, 'message':'Duplicate data found'})
+   if 'Items in response' and count>0:
+      return jsonify({'success': True, 'message': 'Login successfull','gymIds':gymIds})
 
    else:
        return jsonify({'success': False, 'message': 'User not found or incorrect details'})
+ 
  
 if __name__ == '__main__':
    app.run(debug=True)
